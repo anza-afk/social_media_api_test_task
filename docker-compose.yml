@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  app:
+    container_name: app
+    build:
+      context: .
+    entrypoint: >
+      sh -c "uvicorn main:app --reload --host 0.0.0.0"
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - SQLITE_PATH=/sql_app.db
+
