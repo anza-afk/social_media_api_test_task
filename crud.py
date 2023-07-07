@@ -34,7 +34,7 @@ def get_user(db: Session, user_id: int) -> models.User:
     return user
 
 
-def get_user_by_username(db: Session, username: str) -> models.User:
+def get_user_by_username(db: Session, username: str) -> models.User | None:
     """
     Returns user by username from db.
     """
@@ -238,7 +238,7 @@ def update_like(
     post_id: int,
     current_user: schemas.User,
     db: Session
-) -> None:
+) -> models.Post:
     """
     Adds like to post from current user
     if there is no like and current user isn't author;
